@@ -8,7 +8,8 @@ function TaskList() {
     { name: 'Task 3', completed: false },
     { name: 'Task 4', completed: false },
     { name: 'Task 5', completed: true },
-    { name: 'Task 6', completed: true }
+     { name: 'Task 6', completed: true },
+    { name: 'Task 7', completed: true }
   ];
 
   return (
