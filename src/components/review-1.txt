@@ -1,0 +1,8 @@
+#¿Qué es mi producto y para que sirve?
+
+Mi producto es una lista de tareas. la cual te permitira saber cuales tares tendras pendiente por hacer, y cuales ya completaste 
+
+
+#¿Cuáles son las funcionalidades más importantes y porque los usuarios las usarían?
+
+Quedaran guardadas en tiempo real puedes anotarlas e irte y en dias abrirla de nuevo y tener todas tus tareas alli intactas ademas de la funcionalidad que se le agregara mas adelante de poder priorizar las tareas que mas importantes necesitas hacer.
