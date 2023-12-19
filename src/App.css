@@ -1,0 +1,40 @@
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+task-input {
+  width: 100px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.task-textarea {
+  width: 200px;
+  height: 100px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+h1 {
+  color: #ff0066; 
+  background-color: #ffffff; 
+  padding: 10px; /
+}
+
+p {
+  width: 100%; 
+  max-width: 700px; 
+  margin: 0 auto; 
+}

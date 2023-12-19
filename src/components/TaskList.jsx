@@ -1,23 +1,97 @@
-import React from 'react';
-import Task from './Task';
+import React, { useState } from "react";
+import Task from "./Task";
+import useTaskList from "../Hooks/useTaskList";
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Textarea,
+} from "@chakra-ui/react";
 
 function TaskList() {
-  const tasks = [
-    { name: 'Task 1', completed: false },
-    { name: 'Task 2', completed: true },
-    { name: 'Task 3', completed: false },
-    { name: 'Task 4', completed: false },
-    { name: 'Task 5', completed: true },
-     { name: 'Task 6', completed: true },
-    { name: 'Task 7', completed: true }
-  ];
+  const { tasks, addTask, toggleTask, deleteTask, editTask } = useTaskList();
+  const [newTaskName, setNewTaskName] = useState("");
+  const [newTaskDescription, setNewTaskDescription] = useState("");
+
+  function handleTaskAdd(e) {
+    e.preventDefault();
+    addTask(newTaskName, newTaskDescription);
+    setNewTaskName("");
+    setNewTaskDescription("");
+  }
 
   return (
-    <ul>
-      {tasks.map((task, index) => (
-        <Task key={index} name={task.name} completed={task.completed} />
+    <div className="task-list">
+      <form onSubmit={handleTaskAdd}>
+        <FormControl>
+          <FormLabel htmlFor="new-task-name">Nueva Tarea:</FormLabel>
+          <Input
+            type="text"
+            id="new-task-name"
+            value={newTaskName}
+            onChange={(e) => setNewTaskName(e.target.value)}
+            required
+            minLength={3}
+            size="sm"
+            variant="filled"
+            _focus={{
+              borderColor: "teal.500",
+              boxShadow: "0 0 0 1px teal.500",
+            }}
+          />
+        </FormControl>
+        <br />
+        <FormControl>
+          <FormLabel htmlFor="new-task-description">Descripción:</FormLabel>
+          <Textarea
+            id="new-task-description"
+            value={newTaskDescription}
+            onChange={(e) => setNewTaskDescription(e.target.value)}
+            size="sm"
+            variant="filled"
+            _focus={{
+              borderColor: "teal.500",
+              boxShadow: "0 0 0 1px teal.500",
+            }}
+            rows={2}
+            sx={{
+              height: "auto",
+              resize: "vertical",
+              maxHeight: "10rem",
+            }}
+          />
+        </FormControl>
+        <br />
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Button colorScheme="green" type="submit" className="task-button">
+            Agregar
+          </Button>
+        </div>
+      </form>
+      {tasks.map((task) => (
+        <div key={task.id}>
+          <Task
+            task={task}
+            handleTaskAction={(action, id, editedTask) => {
+              switch (action) {
+                case "toggle":
+                  toggleTask(id);
+                  break;
+                case "delete":
+                  deleteTask(id);
+                  break;
+                case "edit":
+                  editTask(id, editedTask);
+                  break;
+                default:
+                  break;
+              }
+            }}
+          />
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
 
